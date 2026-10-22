@@ -1,0 +1,124 @@
+/* auth.css – Trang Đăng nhập / Đăng ký (pages/login.html) */
+
+.auth-main { background: var(--color-surface-alt); }
+.auth-wrap { padding-block: var(--space-5) var(--space-7); }
+.auth-wrap .breadcrumb { margin-bottom: var(--space-5); }
+
+.auth-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 960px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Cột giới thiệu ---------- */
+.auth-card__aside {
+  padding: var(--space-5);
+  color: #fff;
+  background: linear-gradient(145deg, var(--color-primary-dark), var(--color-primary));
+}
+.auth-card__emoji { font-size: 2.5rem; line-height: 1; margin-bottom: var(--space-3); }
+.auth-card__aside h1 { color: #fff; margin-bottom: var(--space-3); font-family: 'Playfair Display', serif; font-size: var(--fs-xl); }
+.auth-card__aside p { opacity: 0.9; }
+.auth-card__aside ul { display: none; margin-top: var(--space-4); gap: var(--space-2); }
+.auth-card__aside li::before { content: '✓'; margin-right: var(--space-2); color: var(--color-accent); font-weight: 700; }
+
+/* ---------- Cột form ---------- */
+.auth-card__main { padding: var(--space-5); min-width: 0; }
+
+.auth-tabs {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-5);
+  padding: var(--space-1);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-pill);
+}
+.auth-tabs__tab {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.auth-tabs__tab.is-active { color: #fff; background: var(--color-primary); }
+.auth-tabs__tab:focus-visible { outline: 2px solid var(--color-accent-dark); outline-offset: 2px; }
+
+.auth-subtitle { margin-bottom: var(--space-2); font-size: var(--fs-lg); }
+.auth-card__main [role='tabpanel'],
+.auth-card__main section { outline: none; }
+.auth-card__main .form-group { margin-bottom: var(--space-4); }
+
+.auth-message {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-md);
+}
+.auth-message.is-success { color: #1f6b3d; background: #e4f4ea; }
+.auth-message.is-error { color: #7a1f14; background: #fdecea; }
+
+.auth-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.link-btn {
+  padding: 0;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.link-btn:hover { text-decoration: underline; }
+.auth-back { display: block; margin: var(--space-4) auto 0; }
+.auth-demo { margin-top: var(--space-5); text-align: center; }
+
+/* ---------- Ô mật khẩu ---------- */
+.password-field { position: relative; }
+.password-field .form-control { padding-right: 4.5rem; }
+.password-field__toggle {
+  position: absolute;
+  top: 50%;
+  right: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* ---------- Độ mạnh mật khẩu ---------- */
+.strength { height: 6px; margin-top: var(--space-2); overflow: hidden; background: var(--color-border); border-radius: var(--radius-pill); }
+.strength__bar { display: block; width: 0; height: 100%; background: var(--color-danger); transition: width 0.25s ease, background 0.25s ease; }
+.strength__bar[data-level='2'] { background: var(--color-warning); }
+.strength__bar[data-level='3'] { background: var(--color-info); }
+.strength__bar[data-level='4'] { background: var(--color-success); }
+
+@media (min-width: 768px) {
+  .auth-card { grid-template-columns: 1fr 1.2fr; }
+  .auth-card__aside { display: flex; flex-direction: column; justify-content: center; padding: var(--space-7) var(--space-6); }
+  .auth-card__aside ul { display: grid; }
+  .auth-card__main { padding: var(--space-6); }
+}

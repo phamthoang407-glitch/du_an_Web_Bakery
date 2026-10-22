@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tất cả bánh – Bơ Vàng Bakery</title>
+    <meta name="description" content="Bánh kem, bánh ngọt, bánh mì, cookie và hộp quà bánh của Bơ Vàng Bakery. Lọc theo hương vị, khoảng giá, bánh có sẵn trong ngày." />
+    <meta name="theme-color" content="#b5533c" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥐%3C/text%3E%3C/svg%3E" />
+
+    <!-- Font (có hỗ trợ tiếng Việt). Bỏ 3 dòng này vẫn chạy bình thường với font dự phòng. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap&subset=vietnamese" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/products.css" />
+  </head>
+
+  <body data-page="products">
+    <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+
+    <!-- Header được nạp bởi js/main.js từ components/header.html -->
+    <div data-component="header"></div>
+
+    <main id="main">
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container">
+          <h1 id="page-title">Tất cả bánh</h1>
+          <p>Bánh nướng mới mỗi sáng. Lọc theo hương vị, mức giá hoặc chọn bánh có sẵn trong ngày để nhận ngay.</p>
+        </div>
+      </section>
+
+      <div class="container catalog-wrap">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><span aria-current="page">Sản phẩm</span></li>
+          </ol>
+        </nav>
+
+        <div class="catalog-layout">
+          <div class="filters-backdrop" id="filters-backdrop" hidden></div>
+
+          <!-- ========== BỘ LỌC (sidebar desktop / drawer mobile) ========== -->
+          <aside class="filters" id="filters" aria-label="Bộ lọc sản phẩm">
+            <div class="filters__header">
+              <h2 class="filters__title">Bộ lọc</h2>
+              <button class="filters__close" id="filters-close" type="button" aria-label="Đóng bộ lọc">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+              </button>
+            </div>
+
+            <form class="filters__form" id="filter-form" novalidate>
+              <fieldset class="filter-group">
+                <legend class="filter-group__title">Loại bánh</legend>
+                <div class="filter-group__list" id="filter-category"></div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__title">Hương vị</legend>
+                <div class="filter-group__list" id="filter-flavor"></div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__title">Mức giá</legend>
+                <div class="filter-group__list" id="filter-price"></div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__title">Tùy chọn</legend>
+                <div class="filter-group__list">
+                  <label class="filter-option">
+                    <input type="checkbox" name="sale" value="1" />
+                    <span class="filter-option__label">Đang giảm giá</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="stock" value="1" />
+                    <span class="filter-option__label">Còn hàng</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="today" value="1" />
+                    <span class="filter-option__label">Có sẵn trong ngày (không cần đặt trước)</span>
+                  </label>
+                </div>
+              </fieldset>
+            </form>
+
+            <div class="filters__footer">
+              <button class="btn btn--ghost btn--sm" type="button" data-reset-filters>Xóa bộ lọc</button>
+              <button class="btn btn--primary" id="filters-apply" type="button">Xem sản phẩm</button>
+            </div>
+          </aside>
+
+          <!-- ========== DANH SÁCH ========== -->
+          <section class="catalog" id="catalog" aria-label="Danh sách sản phẩm">
+            <form class="catalog__search" id="search-form" role="search">
+              <label class="sr-only" for="product-search">Tìm kiếm bánh</label>
+              <svg class="catalog__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+              <input class="form-control catalog__search-input" id="product-search" type="search" name="keyword" placeholder="Tìm bánh kem, cupcake, croissant…" autocomplete="off" />
+              <button class="catalog__search-clear" id="search-clear" type="button" aria-label="Xóa từ khóa" hidden>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+              </button>
+            </form>
+
+            <div class="catalog__toolbar">
+              <button class="btn btn--outline btn--sm filters-toggle" id="filters-open" type="button" aria-controls="filters" aria-expanded="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4" /></svg>
+                Bộ lọc
+              </button>
+              <p class="catalog__count" id="result-count" aria-live="polite"></p>
+              <div class="catalog__sort">
+                <label for="sort-select">Sắp xếp</label>
+                <select class="form-control" id="sort-select"></select>
+              </div>
+            </div>
+
+            <div class="chips" id="active-filters"></div>
+
+            <div class="grid grid--3 catalog__grid" id="product-grid"></div>
+            <noscript><p class="empty-state">Vui lòng bật JavaScript để xem danh sách bánh.</p></noscript>
+
+            <nav class="pagination" id="pagination" aria-label="Phân trang" hidden></nav>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer được nạp bởi js/main.js từ components/footer.html -->
+    <div data-component="footer"></div>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+  </body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bơ Vàng Bakery – Bánh tươi nướng mỗi sáng</title>
+    <meta name="description" content="Bơ Vàng Bakery: bánh kem, bánh ngọt, croissant, cookie và hộp quà bánh nướng tươi mỗi sáng từ bơ thật. Đặt bánh online, giao nhanh nội thành." />
+    <meta name="theme-color" content="#b5533c" />
+    <meta property="og:title" content="Bơ Vàng Bakery – Bánh tươi nướng mỗi sáng" />
+    <meta property="og:description" content="Bánh kem, bánh ngọt, croissant, cookie và hộp quà bánh làm từ bơ thật. Đặt online, giao nhanh nội thành." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥐%3C/text%3E%3C/svg%3E" />
+
+    <!-- Font (có hỗ trợ tiếng Việt). Bỏ 3 dòng này vẫn chạy bình thường với font dự phòng. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap&subset=vietnamese" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+
+  <body data-page="home">
+    <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+
+    <!-- Header được nạp bởi js/main.js từ components/header.html -->
+    <div data-component="header"></div>
+
+    <main id="main">
+      <!-- ============ 1. HERO ============ -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="hero__eyebrow">Nướng mới mỗi sáng từ 4:00</span>
+            <h1 class="hero__title" id="hero-title">Bánh ngon từ <em>bơ thật</em>, ngọt ngào từng khoảnh khắc</h1>
+            <p class="hero__lead">Từ chiếc bánh sinh nhật đến hộp quà tặng, Bơ Vàng làm từng chiếc bánh thủ công, không chất bảo quản và giao tận nơi khi bánh còn tươi.</p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary btn--lg" href="pages/products.html">Đặt bánh ngay</a>
+              <a class="btn btn--outline btn--lg" href="pages/stores.html">Tìm cửa hàng</a>
+            </div>
+
+            <ul class="hero__stats" aria-label="Bơ Vàng trong vài con số">
+              <li><strong data-stat="products">16</strong><span>món bánh</span></li>
+              <li><strong data-stat="stores">6</strong><span>cửa hàng</span></li>
+              <li><strong data-stat="rating">4,7</strong><span>★ đánh giá trung bình</span></li>
+            </ul>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="hero__plate"><span class="hero__cake">🎂</span></div>
+            <span class="hero__float hero__float--1">🍓</span>
+            <span class="hero__float hero__float--2">🥐</span>
+            <span class="hero__float hero__float--3">🧁</span>
+            <span class="hero__float hero__float--4">🍪</span>
+            <span class="hero__chip hero__chip--a">🔥 Vừa ra lò sáng nay</span>
+            <span class="hero__chip hero__chip--b">🚚 Giao nhanh nội thành</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 2. CAM KẾT ============ -->
+      <section class="usp" aria-label="Cam kết của Bơ Vàng">
+        <div class="container">
+          <ul class="usp__list">
+            <li class="usp__item">
+              <span class="usp__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1-.5-2-1-3 3 2 5 5 5 8a9 9 0 0 1-18 0c0-4 3-7 6-9"/></svg>
+              </span>
+              <div>
+                <h2 class="usp__title">Nướng trong ngày</h2>
+                <p>Không bán bánh tồn, mỗi mẻ ra lò từ 4 giờ sáng.</p>
+              </div>
+            </li>
+            <li class="usp__item">
+              <span class="usp__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              </span>
+              <div>
+                <h2 class="usp__title">Bơ thật, kem tươi</h2>
+                <p>Bơ Pháp, kem tươi, không bơ thực vật, không phụ gia.</p>
+              </div>
+            </li>
+            <li class="usp__item">
+              <span class="usp__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </span>
+              <div>
+                <h2 class="usp__title">Giao lạnh tận nơi</h2>
+                <p>Miễn phí giao hàng cho đơn từ 300.000 ₫.</p>
+              </div>
+            </li>
+            <li class="usp__item">
+              <span class="usp__icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+              </span>
+              <div>
+                <h2 class="usp__title">Viết chữ miễn phí</h2>
+                <p>Lời chúc theo ý bạn, tặng kèm nến và dao cắt bánh.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 3. DANH MỤC ============ -->
+      <section class="section" aria-labelledby="categories-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <div>
+              <span class="section__eyebrow">Danh mục</span>
+              <h2 id="categories-title">Hôm nay bạn muốn ăn gì?</h2>
+            </div>
+            <p class="section__subtitle">Chọn nhóm bánh yêu thích để xem đầy đủ hương vị và kích cỡ.</p>
+          </div>
+          <ul class="category-grid" id="category-grid"></ul>
+        </div>
+      </section>
+
+      <!-- ============ 4. SẢN PHẨM NỔI BẬT (có tab) ============ -->
+      <section class="section section--alt" aria-labelledby="featured-title">
+        <div class="container">
+          <div class="section__header">
+            <div>
+              <span class="section__eyebrow">Được yêu thích</span>
+              <h2 id="featured-title">Bánh nổi bật</h2>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Lọc bánh nổi bật">
+              <button class="tabs__tab is-active" type="button" role="tab" id="tab-bestseller" aria-selected="true" aria-controls="featured-panel" data-tab="bestseller">Bán chạy</button>
+              <button class="tabs__tab" type="button" role="tab" id="tab-new" aria-selected="false" aria-controls="featured-panel" tabindex="-1" data-tab="new">Mới ra lò</button>
+              <button class="tabs__tab" type="button" role="tab" id="tab-sale" aria-selected="false" aria-controls="featured-panel" tabindex="-1" data-tab="sale">Đang giảm giá</button>
+            </div>
+          </div>
+
+          <div class="grid grid--4" id="featured-panel" role="tabpanel" aria-labelledby="tab-bestseller"></div>
+          <noscript><p class="empty-state">Vui lòng bật JavaScript để xem danh sách bánh.</p></noscript>
+
+          <div class="text-center mt-6">
+            <a class="btn btn--outline" href="pages/products.html">Xem tất cả bánh</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5. KHUYẾN MÃI ============ -->
+      <section class="section section--tight" aria-labelledby="promo-title">
+        <div class="container">
+          <div class="promo">
+            <div class="promo__text">
+              <span class="promo__tag">Tháng sinh nhật</span>
+              <h2 id="promo-title">Giảm 15% bánh kem, tặng nến và thiệp</h2>
+              <p>Áp dụng cho bánh kem đặt qua website đến hết 31/10/2026. Đơn từ 300.000 ₫ được miễn phí giao hàng nội thành.</p>
+              <a class="btn btn--primary btn--lg" href="pages/products.html?category=banh-kem">Chọn bánh kem</a>
+            </div>
+            <div class="promo__art" aria-hidden="true">🎂</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. QUY TRÌNH ĐẶT BÁNH ============ -->
+      <section class="section" aria-labelledby="steps-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <div>
+              <span class="section__eyebrow">Dễ dàng</span>
+              <h2 id="steps-title">Đặt bánh trong 3 bước</h2>
+            </div>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <span class="step__num" aria-hidden="true">1</span>
+              <h3>Chọn bánh</h3>
+              <p>Duyệt danh mục, chọn hương vị và kích cỡ phù hợp với số người ăn.</p>
+            </li>
+            <li class="step">
+              <span class="step__num" aria-hidden="true">2</span>
+              <h3>Chọn thời gian nhận</h3>
+              <p>Bánh kem cần đặt trước khoảng 24 giờ. Bánh có sẵn trong ngày có thể nhận ngay.</p>
+            </li>
+            <li class="step">
+              <span class="step__num" aria-hidden="true">3</span>
+              <h3>Nhận bánh</h3>
+              <p>Đến tiệm lấy bánh hoặc để Bơ Vàng giao lạnh tận nơi, bánh luôn còn tươi.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ 7. KHÁCH HÀNG NÓI GÌ ============ -->
+      <section class="section section--alt" aria-labelledby="reviews-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <div>
+              <span class="section__eyebrow">Cảm nhận</span>
+              <h2 id="reviews-title">Khách hàng nói gì về Bơ Vàng</h2>
+            </div>
+          </div>
+          <div class="grid grid--3">
+            <figure class="testimonial">
+              <span class="testimonial__stars" aria-label="5 trên 5 sao">★★★★★</span>
+              <blockquote><p>Bánh dâu tươi rất ngon, kem nhẹ không ngấy. Cả nhà ăn hết sạch trong buổi tiệc sinh nhật của bé.</p></blockquote>
+              <figcaption><strong>Chị Phương</strong><span>Cầu Giấy, Hà Nội</span></figcaption>
+            </figure>
+            <figure class="testimonial">
+              <span class="testimonial__stars" aria-label="5 trên 5 sao">★★★★★</span>
+              <blockquote><p>Croissant giòn tan, thơm mùi bơ. Sáng nào đi làm tôi cũng ghé mua một hộp mang vào văn phòng.</p></blockquote>
+              <figcaption><strong>Anh Minh</strong><span>Quận 1, TP. Hồ Chí Minh</span></figcaption>
+            </figure>
+            <figure class="testimonial">
+              <span class="testimonial__stars" aria-label="5 trên 5 sao">★★★★★</span>
+              <blockquote><p>Hộp quà macaron và cookie đóng gói rất đẹp, giao đúng giờ. Đối tác nhận quà rất hài lòng.</p></blockquote>
+              <figcaption><strong>Chị Hà</strong><span>Hải Châu, Đà Nẵng</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. TIN TỨC ============ -->
+      <section class="section" aria-labelledby="news-title">
+        <div class="container">
+          <div class="section__header">
+            <div>
+              <span class="section__eyebrow">Góc làm bánh</span>
+              <h2 id="news-title">Tin tức và công thức</h2>
+            </div>
+            <a class="btn btn--ghost" href="pages/news.html">Xem tất cả bài viết →</a>
+          </div>
+          <div class="grid grid--3" id="home-news"></div>
+        </div>
+      </section>
+
+      <!-- ============ 9. CỬA HÀNG ============ -->
+      <section class="section section--tight" aria-labelledby="stores-title">
+        <div class="container">
+          <div class="stores-panel">
+            <div class="stores-panel__text">
+              <span class="section__eyebrow">Hệ thống cửa hàng</span>
+              <h2 id="stores-title">Ghé Bơ Vàng gần bạn</h2>
+              <p>Nhận bánh đặt trước, thưởng thức bánh còn ấm và xem thợ bánh làm việc ngay tại tiệm.</p>
+              <a class="btn btn--accent btn--lg" href="pages/stores.html">Xem tất cả cửa hàng</a>
+            </div>
+            <ul class="city-list" id="home-cities" aria-label="Cửa hàng theo thành phố"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer được nạp bởi js/main.js từ components/footer.html -->
+    <div data-component="footer"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      /* Logic riêng của trang chủ: render dữ liệu từ data.js ra DOM. */
+      (function () {
+        'use strict';
+
+        const { DataService, AppData, App } = window;
+        const { Templates, Utils, Paths } = App;
+        const esc = Utils.escapeHTML;
+
+        /* ---- Số liệu ở hero (tính từ dữ liệu, không gõ cứng) ---- */
+        function renderStats() {
+          const products = AppData.PRODUCTS;
+          const totalReviews = products.reduce((sum, p) => sum + p.reviews, 0);
+          const avgRating = products.reduce((sum, p) => sum + p.rating * p.reviews, 0) / totalReviews;
+
+          const values = {
+            products: products.length,
+            stores: AppData.STORES.length,
+            rating: avgRating.toLocaleString('vi-VN', { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+          };
+          Utils.$$('[data-stat]').forEach((el) => {
+            el.textContent = values[el.dataset.stat];
+          });
+        }
+
+        /* ---- Danh mục ---- */
+        function renderCategories() {
+          Utils.$('#category-grid').innerHTML = DataService.getCategoriesWithCount()
+            .map(
+              (c) => `
+                <li>
+                  <a class="category-tile" href="${Paths.products({ category: c.id })}">
+                    <span class="category-tile__icon" aria-hidden="true">${c.icon}</span>
+                    <span class="category-tile__name">${esc(c.name)}</span>
+                    <span class="category-tile__count">${c.count} sản phẩm</span>
+                  </a>
+                </li>`
+            )
+            .join('');
+        }
+
+        /* ---- Tab sản phẩm nổi bật ---- */
+        function initFeaturedTabs() {
+          const panel = Utils.$('#featured-panel');
+          const tabs = Utils.$$('.tabs__tab');
+          const sources = {
+            bestseller: () => DataService.getFeaturedProducts(8),
+            new: () => DataService.getNewArrivals(8),
+            sale: () => DataService.getSaleProducts(8),
+          };
+
+          function showTab(key) {
+            tabs.forEach((tab) => {
+              const active = tab.dataset.tab === key;
+              tab.classList.toggle('is-active', active);
+              tab.setAttribute('aria-selected', String(active));
+              tab.tabIndex = active ? 0 : -1;
+            });
+            panel.setAttribute('aria-labelledby', `tab-${key}`);
+
+            const list = sources[key]();
+            panel.innerHTML = list.length
+              ? list.map((p) => Templates.productCard(p)).join('')
+              : '<p class="empty-state">Hiện chưa có sản phẩm trong nhóm này.</p>';
+          }
+
+          tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => showTab(tab.dataset.tab));
+
+            // Điều hướng bằng phím mũi tên theo chuẩn WAI-ARIA tabs.
+            tab.addEventListener('keydown', (event) => {
+              const lastIndex = tabs.length - 1;
+              let next = null;
+              if (event.key === 'ArrowRight') next = index === lastIndex ? 0 : index + 1;
+              if (event.key === 'ArrowLeft') next = index === 0 ? lastIndex : index - 1;
+              if (event.key === 'Home') next = 0;
+              if (event.key === 'End') next = lastIndex;
+              if (next === null) return;
+              event.preventDefault();
+              tabs[next].focus();
+              showTab(tabs[next].dataset.tab);
+            });
+          });
+
+          showTab('bestseller');
+        }
+
+        /* ---- Tin tức mới nhất ---- */
+        function renderNews() {
+          Utils.$('#home-news').innerHTML = DataService.getLatestArticles(3)
+            .map((a) => Templates.articleCard(a))
+            .join('');
+        }
+
+        /* ---- Cửa hàng theo thành phố ---- */
+        function renderCities() {
+          Utils.$('#home-cities').innerHTML = DataService.getCities()
+            .map((city) => {
+              const count = DataService.getStores({ city }).length;
+              return `
+                <li>
+                  <a class="city-chip" href="pages/stores.html?city=${encodeURIComponent(city)}">
+                    <span class="city-chip__name">${esc(city)}</span>
+                    <span class="city-chip__count">${count} cửa hàng</span>
+                  </a>
+                </li>`;
+            })
+            .join('');
+        }
+
+        renderStats();
+        renderCategories();
+        initFeaturedTabs();
+        renderNews();
+        renderCities();
+      })();
+    </script>
+  </body>
+</html>

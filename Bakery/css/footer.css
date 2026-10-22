@@ -1,0 +1,196 @@
+/* ==========================================================================
+   footer.css – Chân trang
+   Phụ thuộc biến CSS trong style.css
+   ========================================================================== */
+
+.site-footer {
+  margin-top: var(--space-8);
+  color: #e6cdb9;
+  background: var(--color-primary-dark);
+}
+.site-footer a {
+  transition: color var(--transition), transform var(--transition);
+}
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- Lưới các cột ---------- */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-block: var(--space-7);
+}
+
+.footer__brand-name {
+  margin-bottom: var(--space-3);
+  font-size: 1.6rem;
+  color: #fff;
+}
+.footer__about {
+  max-width: 42ch;
+  font-size: var(--fs-sm);
+  color: #d8bfa8;
+}
+
+.footer__title {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+}
+.footer__links a {
+  display: inline-block;
+}
+.footer__links a:hover {
+  transform: translateX(3px);
+}
+
+/* ---------- Mạng xã hội ---------- */
+.footer__socials {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.footer__social {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  transition: background-color var(--transition), transform var(--transition);
+}
+.footer__social:hover {
+  color: var(--color-primary-dark) !important;
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ---------- Liên hệ ---------- */
+.footer__address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  font-style: normal;
+}
+.footer__address p + p {
+  margin-top: 0;
+}
+.footer__address a {
+  color: #fff;
+}
+
+/* ---------- Đăng ký nhận tin ---------- */
+.footer__newsletter {
+  margin-top: var(--space-5);
+}
+.footer__newsletter-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #fff;
+}
+.footer__newsletter-row {
+  display: flex;
+  gap: var(--space-2);
+}
+.footer__newsletter-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 1rem;
+  font-size: var(--fs-sm);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-pill);
+  transition: border-color var(--transition), background-color var(--transition);
+}
+.footer__newsletter-input::placeholder {
+  color: #c4a891;
+}
+.footer__newsletter-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--color-accent);
+}
+.footer__newsletter-btn {
+  flex-shrink: 0;
+  padding: 0.65rem 1.2rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition);
+}
+.footer__newsletter-btn:hover {
+  background: #f2b556;
+}
+
+/* ---------- Thanh bản quyền ---------- */
+.footer__bottom {
+  font-size: var(--fs-xs);
+  color: #c4a891;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.footer__bottom-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  text-align: center;
+}
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-5);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (min-width: 576px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer__brand,
+  .footer__contact {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer__bottom-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: var(--space-7);
+  }
+  .footer__brand,
+  .footer__contact {
+    grid-column: auto;
+  }
+}

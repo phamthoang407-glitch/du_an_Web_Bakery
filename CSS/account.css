@@ -1,0 +1,52 @@
+/* ===== Tài khoản — responsive ===== */
+.account-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;padding:45px 0 80px;align-items:start}
+.account-menu{padding:12px;position:sticky;top:100px}
+.account-menu nav{display:block}
+.account-menu a{display:block;padding:12px 14px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:500}
+.account-menu a.active,.account-menu a:hover{background:var(--cream-2);color:var(--brown);font-weight:700}
+.account-menu a.danger{color:var(--red)}
+.account-menu a:focus-visible{outline:2px solid var(--brown);outline-offset:2px}
+
+.account-main{display:grid;gap:20px;min-width:0}
+.account-content{padding:28px;scroll-margin-top:100px}
+.profile-head{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:25px}
+.avatar{width:70px;height:70px;flex:none;border-radius:50%;background:#E6D1BF;color:var(--brown-dark);display:grid;place-items:center;font-size:24px;font-weight:700}
+.profile-head h2{font-size:20px;overflow-wrap:anywhere}
+.profile-head p{font-size:13px;color:var(--muted)}
+.account-content h3{font-size:16px;margin-bottom:16px}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field input{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:#fff;color:var(--ink);font-size:16px}
+.field input:focus-visible{outline:2px solid var(--brown);outline-offset:1px;border-color:var(--brown)}
+.field .err{display:none;color:var(--red);font-size:13px;margin-top:5px}
+.field.bad .err{display:block}
+.field.bad input{border-color:var(--red)}
+.form-hint{color:var(--muted);font-size:13px;margin:14px 0 18px}
+
+.order-row{display:grid;grid-template-columns:1fr auto auto;gap:6px 16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.order-row:hover b{color:var(--brown)}
+.order-row b{display:block;font-size:15px}
+.order-row small{color:var(--muted);font-size:13px}
+.order-row strong{color:var(--brown);text-align:right}
+.all-orders{display:inline-block;margin-top:14px}
+.muted-empty{color:var(--muted);font-size:14px}
+
+@media(max-width:1000px){
+  .account-layout{grid-template-columns:190px minmax(0,1fr);gap:20px}
+}
+
+@media(max-width:760px){
+  .account-layout{display:block;padding:22px 0 40px}
+  .account-menu{position:static;margin-bottom:14px;padding:8px}
+  .account-menu nav{display:flex;gap:6px;overflow-x:auto}
+  .account-menu a{white-space:nowrap;flex:none;padding:10px 14px}
+  .account-main{gap:14px}
+  .account-content{padding:20px 16px}
+  .profile-head{padding-bottom:16px;margin-bottom:18px}
+  .avatar{width:56px;height:56px;font-size:20px}
+  .form-grid{grid-template-columns:1fr;gap:14px}
+  .form-hint+.btn,#profile-form .btn{width:100%}
+  .order-row{grid-template-columns:1fr auto}
+  .order-row strong{grid-column:1/-1;text-align:left}
+}

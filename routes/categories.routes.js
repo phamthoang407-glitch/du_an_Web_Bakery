@@ -1,0 +1,11 @@
+const router=require("express").Router();
+const {db}=require("../config/database");
+const {authenticate}=require("../middleware/auth.middleware");
+const {allowRoles}=require("../middleware/role.middleware");
+const ok=(res,data,message="Success")=>res.json({success:true,message,data});
+router.get("/",(req,res)=>ok(res,db.prepare("SELECT * FROM categories ORDER BY id").all()));
+router.get("/:id",(req,res)=>{const x=db.prepare("SELECT * FROM categories WHERE id=?").get(req.params.id); if(!x)return res.status(404).json({success:false,message:"Không tìm thấy danh mục."}); ok(res,x)});
+router.post("/",authenticate,allowRoles("ADMIN"),(req,res)=>{try{const r=db.prepare("INSERT INTO categories(name,description) VALUES(?,?)").run(req.body.name,req.body.description||"");res.status(201).json({success:true,message:"Tạo danh mục thành công.",data:db.prepare("SELECT * FROM categories WHERE id=?").get(r.lastInsertRowid)})}catch(e){res.status(409).json({success:false,message:"Tên danh mục đã tồn tại."})}});
+router.put("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("UPDATE categories SET name=?,description=? WHERE id=?").run(req.body.name,req.body.description||"",req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy danh mục."});ok(res,db.prepare("SELECT * FROM categories WHERE id=?").get(req.params.id),"Cập nhật danh mục thành công.")});
+router.delete("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{try{const r=db.prepare("DELETE FROM categories WHERE id=?").run(req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy danh mục."});ok(res,null,"Xóa danh mục thành công.")}catch(e){res.status(400).json({success:false,message:"Không thể xóa danh mục đang có sản phẩm."})}});
+module.exports=router;

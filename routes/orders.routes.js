@@ -1,0 +1,2 @@
+const router=require("express").Router();const c=require("../controllers/order.controller");const {authenticate}=require("../middleware/auth.middleware");const {allowRoles}=require("../middleware/role.middleware");
+router.use(authenticate);router.post("/",c.create);router.get("/",c.list);router.get("/:id",c.get);router.put("/:id/status",allowRoles("STAFF","ADMIN"),c.updateStatus);module.exports=router;

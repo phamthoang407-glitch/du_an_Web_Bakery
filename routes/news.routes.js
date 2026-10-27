@@ -1,0 +1,8 @@
+const router=require("express").Router();const {db}=require("../config/database");const {authenticate}=require("../middleware/auth.middleware");const {allowRoles}=require("../middleware/role.middleware");
+const ok=(res,data,message="Success")=>res.json({success:true,message,data});
+router.get("/",(req,res)=>ok(res,db.prepare("SELECT * FROM news ORDER BY id DESC").all()));
+router.get("/:id",(req,res)=>{const x=db.prepare("SELECT * FROM news WHERE id=?").get(req.params.id);if(!x)return res.status(404).json({success:false,message:"Không tìm thấy bài viết."});ok(res,x)});
+router.post("/",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("INSERT INTO news(title,date,category,image,description) VALUES(?,?,?,?,?)").run(req.body.title,req.body.date,req.body.category,req.body.image||"",req.body.description||"");res.status(201).json({success:true,message:"Tạo bài viết thành công.",data:db.prepare("SELECT * FROM news WHERE id=?").get(r.lastInsertRowid)})});
+router.put("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("UPDATE news SET title=?,date=?,category=?,image=?,description=? WHERE id=?").run(req.body.title,req.body.date,req.body.category,req.body.image||"",req.body.description||"",req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy bài viết."});ok(res,db.prepare("SELECT * FROM news WHERE id=?").get(req.params.id),"Cập nhật bài viết thành công.")});
+router.delete("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("DELETE FROM news WHERE id=?").run(req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy bài viết."});ok(res,null,"Xóa bài viết thành công.")});
+module.exports=router;

@@ -1,0 +1,8 @@
+const router=require("express").Router();const {db}=require("../config/database");const {authenticate}=require("../middleware/auth.middleware");const {allowRoles}=require("../middleware/role.middleware");
+const ok=(res,data,message="Success")=>res.json({success:true,message,data});
+router.get("/",(req,res)=>ok(res,db.prepare("SELECT * FROM stores ORDER BY id").all()));
+router.get("/:id",(req,res)=>{const x=db.prepare("SELECT * FROM stores WHERE id=?").get(req.params.id);if(!x)return res.status(404).json({success:false,message:"Không tìm thấy cửa hàng."});ok(res,x)});
+router.post("/",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("INSERT INTO stores(name,address,distance,opening_time) VALUES(?,?,?,?)").run(req.body.name,req.body.address,req.body.distance||"",req.body.opening_time||"08:00 - 21:30");res.status(201).json({success:true,message:"Tạo cửa hàng thành công.",data:db.prepare("SELECT * FROM stores WHERE id=?").get(r.lastInsertRowid)})});
+router.put("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("UPDATE stores SET name=?,address=?,distance=?,opening_time=? WHERE id=?").run(req.body.name,req.body.address,req.body.distance||"",req.body.opening_time||"08:00 - 21:30",req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy cửa hàng."});ok(res,db.prepare("SELECT * FROM stores WHERE id=?").get(req.params.id),"Cập nhật cửa hàng thành công.")});
+router.delete("/:id",authenticate,allowRoles("ADMIN"),(req,res)=>{const r=db.prepare("DELETE FROM stores WHERE id=?").run(req.params.id);if(!r.changes)return res.status(404).json({success:false,message:"Không tìm thấy cửa hàng."});ok(res,null,"Xóa cửa hàng thành công.")});
+module.exports=router;

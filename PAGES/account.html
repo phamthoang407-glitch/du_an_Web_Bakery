@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tài khoản | Bakery Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/account.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="account">
+  <div id="header"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">MY ACCOUNT</span>
+        <h1>Tài khoản của tôi</h1>
+        <p>Quản lý thông tin cá nhân, địa chỉ giao hàng và đơn hàng của bạn.</p>
+      </div>
+    </section>
+
+    <div class="container account-layout">
+      <aside class="panel account-menu">
+        <nav aria-label="Menu tài khoản">
+          <a class="active" href="#info">Thông tin cá nhân</a>
+          <a href="#orders">Đơn hàng của tôi</a>
+          <a href="login.html" id="logout" class="danger">Đăng xuất</a>
+        </nav>
+      </aside>
+
+      <div class="account-main">
+        <section class="panel account-content" id="info">
+          <div class="profile-head">
+            <div class="avatar" id="avatar" aria-hidden="true">KH</div>
+            <div><h2 id="profile-name">Khách hàng</h2><p id="profile-role">Khách hàng</p></div>
+          </div>
+          <form id="profile-form" novalidate>
+            <h3>Thông tin cá nhân</h3>
+            <div class="form-grid">
+              <div class="field"><label for="p-name">Họ và tên</label><input id="p-name" type="text" autocomplete="name"><span class="err">Nhập họ tên (ít nhất 2 ký tự).</span></div>
+              <div class="field"><label for="p-phone">Số điện thoại</label><input id="p-phone" type="tel" inputmode="tel" autocomplete="tel"><span class="err">Nhập số điện thoại hợp lệ, ví dụ 0912345678.</span></div>
+              <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" autocomplete="email"><span class="err">Email chưa đúng định dạng.</span></div>
+              <div class="field"><label for="p-address">Địa chỉ giao hàng mặc định</label><input id="p-address" type="text" autocomplete="street-address"><span class="err">Địa chỉ cần ít nhất 6 ký tự.</span></div>
+            </div>
+            <p class="form-hint">Thông tin này được điền sẵn khi bạn đặt hàng.</p>
+            <button class="btn btn--primary" type="submit">Cập nhật thông tin</button>
+          </form>
+        </section>
+
+        <section class="panel account-content" id="orders">
+          <h3>Đơn hàng gần đây</h3>
+          <div id="recent-orders"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <div id="toast" class="toast" role="status"></div>
+  <nav id="mobile-nav"></nav>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/account.js"></script>
+</body>
+</html>

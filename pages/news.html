@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tin tức &amp; Công thức – Bơ Vàng Bakery</title>
+    <meta name="description" content="Kiến thức làm bánh, công thức, khuyến mãi và câu chuyện từ Bơ Vàng Bakery." />
+    <meta name="theme-color" content="#b5533c" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥐%3C/text%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap&subset=vietnamese" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/news.css" />
+  </head>
+
+  <body data-page="news">
+    <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <section class="page-hero" id="news-hero" aria-labelledby="page-title">
+        <div class="container">
+          <h1 id="page-title">Góc bánh ngọt</h1>
+          <p>Mẹo làm bánh, công thức dễ làm, ưu đãi mới và câu chuyện phía sau mỗi mẻ bánh.</p>
+        </div>
+      </section>
+
+      <div class="container news-wrap">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb" id="news-breadcrumb">
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><span aria-current="page">Tin tức</span></li>
+          </ol>
+        </nav>
+
+        <!-- ========== CHẾ ĐỘ DANH SÁCH ========== -->
+        <section id="news-list-view" aria-label="Danh sách bài viết">
+          <div class="news-toolbar">
+            <div class="tabs" id="news-topics" role="group" aria-label="Chủ đề"></div>
+            <form class="news-search" id="news-search-form" role="search" novalidate>
+              <label class="sr-only" for="news-search">Tìm bài viết</label>
+              <input class="form-control" id="news-search" type="search" placeholder="Tìm bài viết…" autocomplete="off" maxlength="80" />
+            </form>
+          </div>
+          <p class="news-count" id="news-count" role="status" aria-live="polite"></p>
+          <div id="news-featured"></div>
+          <div class="grid grid--3 news-grid" id="news-grid"></div>
+          <nav class="pagination" id="news-pagination" aria-label="Phân trang"></nav>
+        </section>
+
+        <!-- ========== CHẾ ĐỘ CHI TIẾT (?id=) ========== -->
+        <div id="news-detail-view" hidden></div>
+      </div>
+    </main>
+
+    <div data-component="footer"></div>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/news.js"></script>
+  </body>
+</html>

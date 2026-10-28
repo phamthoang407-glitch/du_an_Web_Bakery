@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chi tiết sản phẩm – Bơ Vàng Bakery</title>
+    <meta name="description" content="Chi tiết sản phẩm của Bơ Vàng Bakery." />
+    <meta name="theme-color" content="#b5533c" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥐%3C/text%3E%3C/svg%3E" />
+
+    <!-- Font (có hỗ trợ tiếng Việt). Bỏ 3 dòng này vẫn chạy bình thường với font dự phòng. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap&subset=vietnamese" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/products.css" />
+  </head>
+
+  <!-- data-nav-section: tô sáng mục "Sản phẩm" trên menu khi đang ở trang chi tiết -->
+  <body data-page="product-detail" data-nav-section="products">
+    <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+
+    <!-- Header được nạp bởi js/main.js từ components/header.html -->
+    <div data-component="header"></div>
+
+    <main id="main">
+      <div class="container detail-wrap">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb" id="detail-breadcrumb">
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><a href="products.html">Sản phẩm</a></li>
+          </ol>
+        </nav>
+
+        <!-- Nội dung được js/products.js (ProductDetailPage) dựng theo ?id=… -->
+        <div class="product-detail" id="product-detail" aria-busy="true">
+          <div class="detail-skeleton" aria-hidden="true">
+            <div class="skeleton detail-skeleton__image"></div>
+            <div class="detail-skeleton__lines">
+              <div class="skeleton"></div>
+              <div class="skeleton"></div>
+              <div class="skeleton"></div>
+            </div>
+          </div>
+        </div>
+        <noscript><p class="empty-state">Vui lòng bật JavaScript để xem chi tiết sản phẩm.</p></noscript>
+      </div>
+
+      <section class="section section--alt related" id="related-section" aria-labelledby="related-title">
+        <div class="container">
+          <div class="section__header">
+            <div>
+              <span class="section__eyebrow">Gợi ý cho bạn</span>
+              <h2 id="related-title">Có thể bạn cũng thích</h2>
+            </div>
+            <a class="btn btn--ghost" href="products.html">Xem tất cả bánh →</a>
+          </div>
+          <div class="grid grid--4" id="related-products"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer được nạp bởi js/main.js từ components/footer.html -->
+    <div data-component="footer"></div>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+  </body>
+</html>

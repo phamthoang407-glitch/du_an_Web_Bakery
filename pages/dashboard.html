@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard quản lý | Bakery Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="dashboard">
+<div id="header"></div>
+
+<div class="dashboard-layout"><aside class="dashboard-side"><a class="brand" href="../index.html"><span class="brand__mark">B</span><span><strong>BAKERY</strong><small>ADMIN</small></span></a><a class="active" href="#">▦ Dashboard</a><a href="#">◫ Đơn hàng</a><a href="../pages/products.html">□ Sản phẩm</a><a href="#">♙ Khách hàng</a><a href="#">↗ Doanh thu</a><a href="#">⚙ Cài đặt</a></aside>
+<main class="dashboard-main"><div class="dash-head"><div><span class="eyebrow">OVERVIEW</span><h1>Dashboard quản lý</h1><p>Theo dõi hoạt động kinh doanh của Bakery hôm nay.</p></div><button class="btn btn--soft">16/10/2026 ▾</button></div>
+<div class="dash-grid"><div class="stat-card"><span>DOANH THU HÔM NAY</span><strong id="dash-revenue">12.500.000đ</strong><small>↑ 12.5% so với hôm qua</small></div><div class="stat-card"><span>ĐƠN HÀNG</span><strong>85</strong><small>↑ 8.2% tuần này</small></div><div class="stat-card"><span>KHÁCH HÀNG</span><strong>1.248</strong><small>↑ 5.4% tháng này</small></div><div class="stat-card"><span>SẢN PHẨM BÁN CHẠY</span><strong>24</strong><small>Gateaux kem tươi</small></div></div>
+<div class="dashboard-two"><section class="dash-panel"><h3>Doanh thu 7 ngày</h3><div class="chart" aria-label="Biểu đồ doanh thu 7 ngày"></div></div></section>
+<section class="dash-panel"><h3>Sản phẩm bán chạy</h3><div class="best-list">${PRODUCTS.slice(0,4).map((p,i)=>`<div class="best-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${[86,72,65,51][i]} sản phẩm đã bán</small></div><b>${i+1}</b></div>`).join("")}</div></section></div>
+<div class="dash-panel" style="margin-top:18px"><h3>Đơn hàng gần đây</h3><table class="order-table"><thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Giá trị</th><th>Trạng thái</th></tr></thead><tbody><tr><td colspan="4">Đang tải đơn hàng...</td></tr></tbody></table></div>
+</main></div>
+<div id="footer"></div><div id="toast" class="toast"></div><nav id="mobile-nav"></nav>
+<script src="../js/api.js"></script><script src="../js/data.js"></script><script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script><script>document.addEventListener("DOMContentLoaded",()=>requireRole("ADMIN"));</script>
+</body></html>

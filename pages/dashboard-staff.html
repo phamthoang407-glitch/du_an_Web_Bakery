@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhân viên | Bakery Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/header.css"><link rel="stylesheet" href="../css/dashboard-pro.css"><link rel="stylesheet" href="../css/responsive.css">
+</head><body class="admin-body staff-dashboard">
+<div class="admin-shell">
+<aside class="admin-sidebar">
+<a class="admin-brand" href="../index.html"><span class="brand__mark">B</span><span><b>BAKERY</b><small>STAFF PORTAL</small></span></a>
+<div class="admin-user"><div class="admin-avatar staff">NV</div><div><b>Minh Anh</b><small>Nhân viên quầy</small></div></div>
+<nav><a class="active" href="dashboard-staff.html">▦ <span>Đơn hàng</span></a><a href="#orders">▤ <span>Danh sách đơn</span></a><a href="#profile">♙ <span>Hồ sơ cá nhân</span></a></nav>
+<div class="admin-side-bottom"><a href="../index.html">← Về website</a><a href="login.html" onclick="localStorage.removeItem('bakery_role')">⇥ Đăng xuất</a></div>
+</aside>
+<main class="admin-main">
+<header class="admin-top"><div><span class="eyebrow">STAFF PORTAL</span><h1>Xin chào, Minh Anh 👋</h1><p>Hôm nay bạn có <b>12 đơn</b> cần xử lý.</p></div><div class="top-avatar staff">MA</div></header>
+<section class="stat-grid staff-stats">
+<div class="admin-stat"><div class="stat-icon">⏳</div><small>CHỜ XÁC NHẬN</small><strong>4</strong><span class="neutral">Cần xử lý ngay</span></div>
+<div class="admin-stat"><div class="stat-icon">◫</div><small>ĐANG CHUẨN BỊ</small><strong>5</strong><span class="up">Trong ca hôm nay</span></div>
+<div class="admin-stat"><div class="stat-icon">✓</div><small>ĐÃ HOÀN THÀNH</small><strong>18</strong><span class="up">+4 so với hôm qua</span></div>
+</section>
+<section class="admin-card table-card" id="orders"><div class="card-head"><div><b>Danh sách đơn hàng</b><small>Ưu tiên đơn đang chờ xác nhận</small></div><div class="filter-pills"><button class="active">Tất cả</button><button>Chờ xác nhận</button><button>Đang chuẩn bị</button></div></div>
+<div class="table-scroll"><table class="admin-table"><thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+<tbody><tr><td colspan="6">Đang tải đơn hàng...</td></tr></tbody></table></div></section>
+<section class="admin-grid-two staff-bottom" id="profile">
+<div class="admin-card profile-card"><div class="card-head"><div><b>Hồ sơ cá nhân</b><small>Thông tin tài khoản nhân viên</small></div><button class="mini-btn">Chỉnh sửa</button></div>
+<div class="staff-profile"><div class="big-avatar">MA</div><div><h3>Nguyễn Minh Anh</h3><p>Nhân viên bán hàng • Ca sáng</p><span>📞 0908 123 456</span><span>✉️ minh.anh@bakery.vn</span></div></div></div>
+<div class="admin-card shift-card"><div class="card-head"><div><b>Ca làm việc hôm nay</b><small>Thứ Sáu, 16/10/2026</small></div></div><div class="shift-time"><strong>08:00 — 16:30</strong><span class="status status--done">Đang trong ca</span></div><div class="shift-progress"><i></i></div><small>Đã làm 5 giờ 32 phút • Còn 2 giờ 58 phút</small></div>
+</section>
+</main></div>
+<script src="../js/api.js"></script><script src="../js/data.js"></script><script src="../js/main.js"></script><script src="../js/dashboard-pro.js"></script><script>document.addEventListener("DOMContentLoaded",()=>requireRole("STAFF"));</script>
+</body></html>

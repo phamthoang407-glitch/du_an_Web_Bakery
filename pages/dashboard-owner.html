@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chủ quầy | Bakery Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/header.css"><link rel="stylesheet" href="../css/dashboard-pro.css"><link rel="stylesheet" href="../css/responsive.css">
+</head><body class="admin-body" data-page="owner-dashboard">
+<div class="admin-shell">
+<aside class="admin-sidebar">
+<a class="admin-brand" href="../index.html"><span class="brand__mark">B</span><span><b>BAKERY</b><small>MANAGEMENT</small></span></a>
+<div class="admin-user"><div class="admin-avatar">CT</div><div><b>Chủ quầy</b><small>Quản trị hệ thống</small></div></div>
+<nav>
+<a class="active" href="dashboard-owner.html">▦ <span>Tổng quan</span></a>
+<a href="#products">◫ <span>Quản lý sản phẩm</span></a><a href="#categories">◈ <span>Danh mục</span></a>
+<a href="#customers">♙ <span>Khách hàng</span></a><a href="#orders">▤ <span>Đơn hàng</span></a>
+<a href="#stores">⌖ <span>Địa chỉ quầy bánh</span></a><a href="#news">▤ <span>Tin tức</span></a>
+<a href="#revenue">↗ <span>Thống kê doanh thu</span></a><a href="#staff">♙ <span>Tài khoản nhân viên</span></a>
+</nav>
+<div class="admin-side-bottom"><a href="../index.html">← Về website</a><a href="login.html" onclick="localStorage.removeItem('bakery_role')">⇥ Đăng xuất</a></div>
+</aside>
+<main class="admin-main">
+<header class="admin-top"><div><span class="eyebrow">BAKERY MANAGEMENT</span><h1>Tổng quan kinh doanh</h1><p>Xin chào, chủ quầy. Đây là tình hình hoạt động hôm nay.</p></div><div class="admin-actions"><button class="date-chip">16 THÁNG 10, 2026 ▾</button><div class="top-avatar">CT</div></div></header>
+<section class="stat-grid">
+<div class="admin-stat"><div class="stat-icon">₫</div><small>DOANH THU HÔM NAY</small><strong>12.500.000đ</strong><span class="up">↗ 12,5% so với hôm qua</span></div>
+<div class="admin-stat"><div class="stat-icon">▤</div><small>ĐƠN HÀNG HÔM NAY</small><strong>85</strong><span class="up">↗ 8,2% trong tuần</span></div>
+<div class="admin-stat"><div class="stat-icon">♙</div><small>KHÁCH HÀNG</small><strong>1.248</strong><span class="up">↗ 5,4% tháng này</span></div>
+<div class="admin-stat"><div class="stat-icon">★</div><small>GIÁ TRỊ ĐƠN TB</small><strong>468.000đ</strong><span class="neutral">Ổn định</span></div>
+</section>
+<section class="admin-grid-two" id="revenue">
+<div class="admin-card"><div class="card-head"><div><b>Doanh thu 7 ngày</b><small>Hiệu suất bán hàng trong tuần</small></div><select aria-label="Khoảng thời gian"><option>7 ngày</option></select></div>
+<div class="revenue-chart"><div class="chart-y"><span>Max</span><span></span><span></span><span>0</span></div><div class="bars" aria-label="Biểu đồ doanh thu 7 ngày"></div></div></div>
+<div class="admin-card"><div class="card-head"><div><b>Sản phẩm bán chạy</b><small>Top sản phẩm trong tuần</small></div><a href="products.html">Xem tất cả →</a></div>
+<div class="rank-list" aria-live="polite"></div></div>
+</section>
+<section class="admin-card table-card" id="orders"><div class="card-head"><div><b>Đơn hàng gần đây</b><small>Theo dõi và cập nhật trạng thái đơn</small></div><a href="dashboard-staff.html">Mở quản lý đơn →</a></div>
+<div class="table-scroll"><table class="admin-table"><thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Thời gian</th><th>Giá trị</th><th>Trạng thái</th><th></th></tr></thead>
+<tbody><tr><td colspan="6">Đang tải đơn hàng...</td></tr></tbody></table></div></section>
+<section class="quick-grid">
+<div class="quick-card" id="products"><span>◫</span><div><b>Quản lý sản phẩm</b><small>24 sản phẩm đang bán</small></div><a href="products.html">→</a></div>
+<div class="quick-card" id="customers"><span>♙</span><div><b>Khách hàng</b><small>1.248 tài khoản</small></div><a href="dashboard-staff.html">→</a></div>
+<div class="quick-card" id="stores"><span>⌖</span><div><b>Địa chỉ quầy bánh</b><small>3 chi nhánh hoạt động</small></div><a href="stores.html">→</a></div>
+<div class="quick-card" id="news"><span>▤</span><div><b>Tin tức</b><small>12 bài viết</small></div><a href="news.html">→</a></div>
+</section>
+</main></div>
+<script src="../js/api.js"></script><script src="../js/data.js"></script><script src="../js/main.js"></script><script src="../js/dashboard-pro.js"></script><script>document.addEventListener("DOMContentLoaded",()=>requireRole("ADMIN"));</script>
+</body></html>

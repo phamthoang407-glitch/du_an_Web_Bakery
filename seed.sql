@@ -1,0 +1,6 @@
+-- Seed dữ liệu mẫu được tạo bởi backend/seed.js.
+-- Password không được lưu plaintext trong database.
+-- Tài khoản demo:
+-- customer@bakery.vn / customer123
+-- staff@bakery.vn / staff123
+-- admin@bakery.vn / admin123

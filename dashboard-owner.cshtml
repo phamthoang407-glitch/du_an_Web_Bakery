@@ -1,0 +1,245 @@
+@using Microsoft.AspNetCore.Antiforgery
+@using Microsoft.AspNetCore.Identity
+@using Web_barkery1.Models
+@inject IAntiforgery Csrf
+@inject UserManager<ApplicationUser> Users
+@{
+ Layout = null;
+ var account = await Users.GetUserAsync(User);
+ var role = User.IsInRole("ADMIN") ? "ADMIN" : User.IsInRole("STAFF") ? "STAFF" : "CUSTOMER";
+ var current = account == null ? null : new { id=account.Id, full_name=account.FullName, email=account.Email, role=role };
+}
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chủ quầy | Bakery Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/dashboard-pro.css" />
+    <link rel="stylesheet" href="../css/dashboard-polish.css" />
+    <link rel="stylesheet" href="../css/owner-management.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+  <meta name="csrf-token" content="@Csrf.GetAndStoreTokens(Context).RequestToken" />
+<script>window.BAKERY_USER = @Json.Serialize(current);</script>
+</head>
+  <body class="admin-body" data-page="owner-dashboard">
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="../index.html"
+          ><span class="brand__mark">B</span
+          ><span><b>BAKERY</b><small>MANAGEMENT</small></span></a
+        >
+        <div class="admin-user">
+          <div class="admin-avatar">CT</div>
+          <div><b>Chủ quầy</b><small>Chủ quầy</small></div>
+        </div>
+        <nav>
+          <a class="active" href="dashboard-owner.html"
+            >▦ <span>Tổng quan</span></a
+          >
+          <a href="#products">◫ <span>Quản lý sản phẩm</span></a
+          ><a href="#categories">◈ <span>Danh mục</span></a>
+          <a href="#orders">▤ <span>Đơn hàng</span></a>
+          <a href="#stores">⌖ <span>Vị trí quầy bánh</span></a
+          ><a href="#news">▤ <span>Tin tức</span></a>
+          <a href="#revenue">↗ <span>Thống kê doanh thu</span></a
+          ><a href="#staff">♙ <span>Tài khoản nhân viên</span></a>
+        </nav>
+        <div class="admin-side-bottom">
+          <a href="../index.html">← Về website</a
+          ><a href="login.html">⇥ Đăng xuất</a>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <header class="admin-top">
+          <div>
+            <span class="eyebrow">BAKERY MANAGEMENT</span>
+            <h1>Tổng quan kinh doanh</h1>
+            <p>Xin chào, chủ quầy. Đây là tình hình hoạt động hôm nay.</p>
+          </div>
+          <div class="admin-actions">
+            <button class="date-chip">Hôm nay</button>
+            <div class="top-avatar">CT</div>
+          </div>
+        </header>
+        <section class="stat-grid">
+          <div class="admin-stat">
+            <div class="stat-icon">₫</div>
+            <small>DOANH THU HÔM NAY</small><strong>—</strong
+            ><span class="up">Đơn đã hoàn thành</span>
+          </div>
+          <div class="admin-stat">
+            <div class="stat-icon">▤</div>
+            <small>ĐƠN HÀNG HÔM NAY</small><strong>—</strong
+            ><span class="up">Theo ngày đặt đơn</span>
+          </div>
+          <div class="admin-stat">
+            <div class="stat-icon">♙</div>
+            <small>KHÁCH HÀNG</small><strong>—</strong
+            ><span class="up">Tài khoản khách hàng</span>
+          </div>
+          <div class="admin-stat">
+            <div class="stat-icon">★</div>
+            <small>GIÁ TRỊ ĐƠN TB</small><strong>—</strong
+            ><span class="neutral">Đơn hoàn thành trong ngày</span>
+          </div>
+        </section>
+        <section class="admin-grid-two" id="revenue">
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <b>Doanh thu 7 ngày</b
+                ><small>Hiệu suất bán hàng trong tuần</small>
+              </div>
+              <span>7 ngày gần nhất</span>
+            </div>
+            <div class="revenue-chart">Đang tải doanh thu…</div>
+          </div>
+          <div class="admin-card">
+            <div class="card-head">
+              <div>
+                <b>Sản phẩm bán chạy</b><small>Top sản phẩm trong tuần</small>
+              </div>
+              <a href="products.html">Xem tất cả →</a>
+            </div>
+            <div class="rank-list">Đang tải sản phẩm…</div>
+          </div>
+        </section>
+        <section class="admin-card table-card" id="orders">
+          <div class="card-head">
+            <div>
+              <b>Đơn hàng gần đây</b
+              ><small>Theo dõi và cập nhật trạng thái đơn</small>
+            </div>
+            <a href="dashboard-staff.html">Xử lý tất cả đơn hàng →</a>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Khách hàng</th>
+                  <th>Thời gian</th>
+                  <th>Giá trị</th>
+                  <th>Trạng thái</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6">Đang tải đơn hàng…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="quick-grid">
+          <div class="quick-card">
+            <span>◫</span>
+            <div>
+              <b>Quản lý sản phẩm</b><small>Thêm, sửa và nhập/xuất bánh</small>
+            </div>
+            <a href="#products">→</a>
+          </div>
+          <div class="quick-card" id="customers">
+            <span>♙</span>
+            <div><b>Khách hàng</b><small>Số tài khoản được thống kê ở trên</small></div>
+          </div>
+          <div class="quick-card">
+            <span>⌖</span>
+            <div><b>Vị trí quầy bánh</b><small>Cập nhật địa chỉ quầy</small></div>
+            <a href="#stores">→</a>
+          </div>
+          <div class="quick-card">
+            <span>▤</span>
+            <div><b>Tin tức</b><small>Thêm, sửa và xóa bài viết</small></div>
+            <a href="#news">→</a>
+          </div>
+          <div class="quick-card">
+            <span>♙</span>
+            <div><b>Tài khoản nhân viên</b><small>Vô hiệu hóa tài khoản</small></div>
+            <a href="#staff">→</a>
+          </div>
+          <div class="quick-card">
+            <span>◈</span>
+            <div><b>Danh mục</b><small>Thêm, sửa và xóa danh mục</small></div>
+            <a href="#categories">→</a>
+          </div>
+        </section>
+        <section class="admin-card management-card" id="products">
+          <div class="card-head">
+            <div><b>Quản lý sản phẩm</b><small>Thêm, sửa và nhập/xuất số lượng</small></div>
+            <button class="action-btn" type="button" data-add="product">Thêm sản phẩm</button>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table"><thead><tr><th>Sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Tình trạng</th><th></th></tr></thead>
+              <tbody id="owner-products"><tr><td colspan="5">Đang tải...</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="admin-card management-card" id="categories">
+          <div class="card-head">
+            <div><b>Quản lý danh mục</b><small>Thay đổi danh mục sản phẩm</small></div>
+            <button class="action-btn" type="button" data-add="category">Thêm danh mục</button>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table"><thead><tr><th>Tên danh mục</th><th>Mô tả</th><th></th></tr></thead>
+              <tbody id="owner-categories"><tr><td colspan="3">Đang tải...</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="admin-card management-card" id="news">
+          <div class="card-head">
+            <div><b>Quản lý tin tức</b><small>Thêm, chỉnh sửa hoặc xóa bài viết</small></div>
+            <button class="action-btn" type="button" data-add="news">Thêm tin tức</button>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table"><thead><tr><th>Tiêu đề</th><th>Danh mục</th><th>Ngày</th><th></th></tr></thead>
+              <tbody id="owner-news"><tr><td colspan="4">Đang tải...</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="admin-card management-card" id="stores">
+          <div class="card-head">
+            <div><b>Vị trí quầy bánh</b><small>Chỉ quản lý một địa chỉ quầy</small></div>
+          </div>
+          <div id="owner-store"><p>Đang tải...</p></div>
+        </section>
+        <section class="admin-card management-card" id="staff">
+          <div class="card-head">
+            <div><b>Tài khoản nhân viên</b><small>Vô hiệu hóa sẽ chặn đăng nhập và giữ lại dữ liệu lịch sử</small></div><button class="action-btn" data-add="staff">Thêm nhân viên</button>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table"><thead><tr><th>Họ tên</th><th>Email</th><th>Số điện thoại</th><th></th></tr></thead>
+              <tbody id="owner-staff"><tr><td colspan="4">Đang tải...</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <dialog class="owner-modal" id="owner-modal">
+          <form id="owner-entity-form" class="owner-form">
+            <header><h2 id="owner-modal-title"></h2><button type="button" class="owner-modal-close" data-close aria-label="Đóng">×</button></header>
+            <div id="owner-form-fields"></div>
+            <footer><button type="button" class="mini-btn" data-close>Hủy</button><button type="submit" class="action-btn">Lưu</button></footer>
+          </form>
+        </dialog>
+      </main>
+    </div>
+    <script src="../js/api.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard-pro.js"></script>
+    <script src="../js/dashboard-polish.js"></script>
+    <script src="../js/owner-management.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => requireRole("ADMIN"));
+    </script>
+  </body>
+</html>

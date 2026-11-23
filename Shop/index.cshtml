@@ -1,0 +1,123 @@
+@using Microsoft.AspNetCore.Antiforgery
+@using Microsoft.AspNetCore.Identity
+@using Web_barkery1.Models
+@using Web_barkery1.Controllers
+@using System.Text.Json
+@inject IWebHostEnvironment SiteHost
+@inject IAntiforgery Csrf
+@inject UserManager<ApplicationUser> Users
+@{
+ Layout = null;
+ var account = await Users.GetUserAsync(User);
+ var role = User.IsInRole("ADMIN") ? "ADMIN" : User.IsInRole("STAFF") ? "STAFF" : "CUSTOMER";
+ var current = account == null ? null : new { id=account.Id, full_name=account.FullName, email=account.Email, role=role };
+ var branding = new SiteBrandingSettings();
+ var settingsPath = System.IO.Path.Combine(SiteHost.ContentRootPath, "App_Data", "site-branding.json");
+ if (System.IO.File.Exists(settingsPath))
+ {
+     try
+     {
+         branding = JsonSerializer.Deserialize<SiteBrandingSettings>(System.IO.File.ReadAllText(settingsPath)) ?? new SiteBrandingSettings();
+     }
+     catch (Exception ex) when (ex is IOException or JsonException or UnauthorizedAccessException)
+     {
+         // Show default presentation if configuration is inaccessible.
+     }
+ }
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Shop - Bánh ngon cho mọi khoảnh khắc</title>
+  <meta name="description" content="Bakery Shop cung cấp bánh kem, bánh ngọt và bánh mì. Khám phá thực đơn, xem giá và đặt bánh tiện lợi.">
+  <link rel="canonical" href="@( $"{Context.Request.Scheme}://{Context.Request.Host}/" )">
+  <meta name="bakery-ui-version" content="2026-11-10-brand-refresh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<meta name="csrf-token" content="@Csrf.GetAndStoreTokens(Context).RequestToken" />
+<script>window.BAKERY_USER = @Json.Serialize(current);</script>
+</head>
+<body data-page="home">
+  <div id="header"></div>
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <span class="eyebrow hero__eyebrow" data-brand="tagline">@branding.Tagline</span>
+        <h1><span data-brand="title">@branding.Title</span><br><span class="hero-highlight" data-brand="highlight">@branding.Highlight</span></h1>
+        <p data-brand="description">@branding.Description</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="san-pham">Khám phá bánh <span>→</span></a>
+          <a class="btn btn--ghost" href="pages/stores.html">Vị trí quầy bánh</a>
+        </div>
+        <div class="hero__note"><span class="dot"></span> Xem giá rõ ràng · Đặt bánh trực tuyến · Theo dõi đơn tiện lợi</div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__shape"></div>
+        <img data-brand-image="hero" src="@branding.HeroImage" alt="Bánh kem trang trí tinh tế tại Bakery" fetchpriority="high">
+        <div class="hero__badge"><strong data-brand="shopName">@branding.ShopName</strong><span>Made with care</span></div>
+      </div>
+    </section>
+
+    <section class="service-strip" aria-label="Tiện ích đặt bánh">
+      <div><span aria-hidden="true">✦</span><p><strong>Bánh đa dạng</strong><small>Nhiều lựa chọn cho mỗi dịp</small></p></div>
+      <div><span aria-hidden="true">◷</span><p><strong>Đặt hàng dễ dàng</strong><small>Chọn bánh và theo dõi đơn</small></p></div>
+      <div><span aria-hidden="true">♡</span><p><strong>Chăm chút từng chiếc</strong><small>Hương vị và hình thức hài hòa</small></p></div>
+    </section>
+
+    <section class="section categories">
+      <div class="section-heading">
+        <div><span class="eyebrow">KHÁM PHÁ</span><h2>Danh mục nổi bật</h2></div>
+        <a class="text-link" href="san-pham">Xem tất cả →</a>
+      </div>
+      <div class="category-grid">
+        <a class="category-card" href="san-pham?category=Gateaux%20kem%20tươi">
+          <div class="category-card__icon">🍰</div><div><h3>Gateaux kem tươi</h3><p>Bánh kem cho ngày đặc biệt</p></div>
+        </a>
+        <a class="category-card" href="san-pham?category=Bánh%20ngọt">
+          <div class="category-card__icon">🥐</div><div><h3>Bánh ngọt</h3><p>Nhẹ nhàng, thơm mềm</p></div>
+        </a>
+        <a class="category-card" href="san-pham?category=Bánh%20mì">
+          <div class="category-card__icon">🥖</div><div><h3>Bánh mì</h3><p>Nóng giòn mỗi ngày</p></div>
+        </a>
+        <a class="category-card" href="san-pham?category=Bánh%20sinh%20nhật">
+          <div class="category-card__icon">🎂</div><div><h3>Bánh sinh nhật</h3><p>Ngọt ngào cho người thương</p></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section products-section">
+      <div class="section-heading">
+        <div><span class="eyebrow">MENU BAKERY</span><h2>Chọn chiếc bánh bạn thích</h2><p class="section-desc">Những hương vị ngọt ngào đang chờ bạn khám phá.</p></div>
+        <a class="text-link" href="san-pham">Xem tất cả →</a>
+      </div>
+      <div id="featured-products" class="product-grid"></div>
+    </section>
+
+    <section class="story-banner" id="about">
+      <div class="story-banner__image">
+        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=1000&q=80" alt="Bánh được làm thủ công">
+      </div>
+      <div class="story-banner__content">
+        <span class="eyebrow">CÂU CHUYỆN BAKERY</span>
+        <h2>Một chút ngọt ngào,<br>một ngày thật đẹp.</h2>
+        <p>Chúng tôi tin rằng một chiếc bánh ngon không chỉ làm dịu cơn thèm ngọt, mà còn lưu giữ những khoảnh khắc đáng nhớ.</p>
+        <a class="btn btn--dark" href="pages/news.html">Đọc câu chuyện</a>
+      </div>
+    </section>
+  </main>
+<div id="footer"></div>
+  <div id="toast" class="toast"></div>
+  <nav id="mobile-nav"></nav>
+  <script src="js/api.js"></script><script src="js/data.js"></script>
+  <script src="/js/site-branding.js?v=20261116-5"></script><script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

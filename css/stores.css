@@ -1,2 +1,0 @@
-.stores-layout{width:min(720px,100%);margin:45px auto 80px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.store-list__head{padding:22px;border-bottom:1px solid var(--line)}.store-list__head h2{font-size:18px}.store-card{padding:24px}.store-card h3{font-size:16px;margin-bottom:10px}.store-card p{font-size:13px;color:var(--muted);margin:7px 0}.store-card small{display:inline-block;font-size:11px;color:var(--green);margin-top:8px}
-@media(max-width:760px){.stores-layout{margin:25px auto 55px}.store-card{padding:20px}}

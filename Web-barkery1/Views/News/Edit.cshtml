@@ -1,0 +1,4 @@
+@model NewsArticle
+@{ ViewData["Title"] = Model.Id == 0 ? "Viết tin mới" : "Sửa tin tức"; }
+<h1>@ViewData["Title"]</h1><form asp-action="Edit" method="post" class="panel"><input asp-for="Id" type="hidden" /><div asp-validation-summary="All" class="text-danger"></div><label asp-for="Title">Tiêu đề</label><input asp-for="Title" class="form-control my-2" maxlength="200" /><label asp-for="Content">Nội dung</label><textarea asp-for="Content" class="form-control my-2" rows="12" maxlength="10000"></textarea><div class="form-check my-3"><input asp-for="IsPublished" class="form-check-input" /><label asp-for="IsPublished">Đăng công khai</label></div><button class="btn btn-primary" type="submit">Lưu tin</button> <a asp-action="Manage">Quay lại</a></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

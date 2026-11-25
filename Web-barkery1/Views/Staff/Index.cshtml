@@ -1,0 +1,5 @@
+@model IList<ApplicationUser>
+@{ ViewData["Title"] = "Tài khoản nhân viên"; }
+<h1>Tài khoản nhân viên</h1><a class="btn btn-primary mb-3" asp-action="Create">Tạo nhân viên</a><div class="table-responsive"><table class="table mb-0"><thead><tr><th>Họ tên</th><th>Email</th><th>Thao tác</th></tr></thead><tbody>
+@foreach (var u in Model) { <tr><td>@u.FullName</td><td>@u.Email</td><td><form asp-action="Delete" asp-route-id="@u.Id" method="post" data-confirm="Xóa tài khoản nhân viên này? Nhân viên sẽ không thể đăng nhập nữa."><button class="btn btn-sm btn-outline-danger" type="submit">Xóa tài khoản</button></form></td></tr> }
+</tbody></table></div>

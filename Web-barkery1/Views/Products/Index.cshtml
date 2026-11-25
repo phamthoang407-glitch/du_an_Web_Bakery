@@ -1,0 +1,94 @@
+@model List<Web_barkery1.Models.Product>
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Sản phẩm";
+    var vi = CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<h1>Sản phẩm</h1>
+
+
+@if (User.IsInRole("ADMIN"))
+{
+    <a asp-controller="Products"
+       asp-action="Create"
+       class="btn btn-primary mb-3">
+        Thêm bánh
+    </a>
+}
+<p>Có @Model.Count sản phẩm.</p>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">
+        Chưa có sản phẩm trong cơ sở dữ liệu.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Tên bánh</th>
+                    <th>Danh mục</th>
+                    <th>Giá bán</th>
+                    @if (User.IsInRole("ADMIN"))
+                    {
+                        <th>Số lượng</th>
+                        <th>Thao tác</th>
+                    }
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td><img src="@(product.ImageUrl ?? "/images/cake-placeholder.svg")" alt="" width="64" height="48" style="object-fit:cover;border-radius:8px" class="me-2" />@product.Name</td>
+                        <td>@(product.Category?.Name ?? "Chưa có danh mục")</td>
+                        <td>@product.Price.ToString("N0", vi) đ</td>
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                            <td>@product.Stock</td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-outline-primary btn-sm">Sửa</a>
+                                <a asp-controller="Products"
+                                   asp-action="AdjustStock"
+                                   asp-route-id="@product.Id"
+                                   asp-route-isExport="false"
+                                   class="btn btn-success btn-sm">
+                                    Nhập
+                                </a>
+
+                                <a asp-controller="Products"
+                                   asp-action="AdjustStock"
+                                   asp-route-id="@product.Id"
+                                   asp-route-isExport="true"
+                                   class="btn btn-warning btn-sm">
+                                    Xuất
+                                </a>
+                            </td>
+                        }
+                        <td>
+                            @if (product.Stock <= 0)
+                            {
+                                <span class="badge bg-secondary">Hết hàng</span>
+                            }
+                            else if (product.Stock <= 5)
+                            {
+                                <span class="badge bg-warning text-dark">Sắp hết</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Còn hàng</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

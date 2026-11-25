@@ -1,0 +1,62 @@
+﻿@model Web_barkery1.Models.StockAdjustmentViewModel
+
+@{
+    ViewData["Title"] = Model.IsExport
+        ? "Xuất số lượng bánh"
+        : "Nhập số lượng bánh";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-info">
+    <div><strong>Bánh:</strong> @Model.ProductName</div>
+    <div><strong>Số lượng hiện có:</strong> @Model.CurrentStock</div>
+</div>
+
+@if (Model.IsExport)
+{
+    <p>Giảm số lượng bánh hỏng hoặc bỏ cuối ngày.</p>
+}
+else
+{
+    <p>Bổ sung số bánh có thể bán trong ngày.</p>
+}
+
+<form asp-controller="Products"
+      asp-action="AdjustStock"
+      method="post">
+
+    <input asp-for="ProductId" type="hidden" />
+    <input asp-for="IsExport" type="hidden" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="Quantity" class="form-label">
+            Số lượng @(Model.IsExport ? "xuất" : "nhập")
+        </label>
+
+        <input asp-for="Quantity"
+               type="number"
+               min="1"
+               step="1"
+               class="form-control" />
+
+        <span asp-validation-for="Quantity"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn @(Model.IsExport ? "btn-warning" : "btn-success")">
+        @(Model.IsExport ? "Xác nhận xuất" : "Xác nhận nhập")
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Quay lại
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

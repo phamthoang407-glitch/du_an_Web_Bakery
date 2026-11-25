@@ -1,0 +1,9 @@
+@{ ViewData["Title"] = "Chủ quầy"; }
+<p class="eyebrow">Quản lý một quầy bánh</p><h1>Chào chủ quầy</h1><p class="text-muted mb-4">@User.Identity?.Name</p>
+<div class="dashboard-grid">
+<a class="panel text-decoration-none" asp-controller="Products" asp-action="Index"><h2 class="h5">Sản phẩm</h2><p class="mb-0">Thêm, sửa bánh · Nhập và xuất số lượng →</p></a>
+<a class="panel text-decoration-none" asp-controller="Categories" asp-action="Index"><h2 class="h5">Danh mục</h2><p class="mb-0">Sắp xếp các nhóm bánh →</p></a>
+<a class="panel text-decoration-none" asp-controller="News" asp-action="Manage"><h2 class="h5">Tin tức</h2><p class="mb-0">Soạn và cập nhật bài viết →</p></a>
+<a class="panel text-decoration-none" asp-controller="Store" asp-action="Edit"><h2 class="h5">Thông tin quầy</h2><p class="mb-0">Địa chỉ, liên hệ và giờ mở cửa →</p></a>
+<a class="panel text-decoration-none" asp-controller="Staff" asp-action="Index"><h2 class="h5">Nhân viên</h2><p class="mb-0">Tạo và xóa tài khoản nhân viên →</p></a>
+</div>

@@ -1,0 +1,3 @@
+@model NewsArticle
+@{ ViewData["Title"] = Model.Title; }
+<article class="panel"><p class="eyebrow">Tin tức</p><h1>@Model.Title</h1><p class="text-muted">@Model.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy")</p><div class="article-body">@Model.Content</div></article><a class="d-inline-block mt-3" asp-action="Index">← Tất cả tin tức</a>

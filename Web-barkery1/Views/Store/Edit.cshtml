@@ -1,0 +1,9 @@
+@model StoreInfo
+@{ ViewData["Title"] = "Cập nhật quầy"; }
+<h1>Cập nhật thông tin quầy</h1><form asp-action="Edit" method="post" class="panel form-panel"><div asp-validation-summary="All" class="text-danger"></div>
+<label asp-for="Name">Tên quầy</label><input asp-for="Name" class="form-control mb-3" />
+<label asp-for="Address">Địa chỉ</label><input asp-for="Address" class="form-control mb-3" />
+<label asp-for="Phone">Số điện thoại</label><input asp-for="Phone" class="form-control mb-3" />
+<label asp-for="OpeningHours">Giờ mở cửa</label><input asp-for="OpeningHours" class="form-control mb-3" placeholder="Ví dụ: 07:00 – 21:00" />
+<button type="submit" class="btn btn-primary">Lưu thông tin</button> <a asp-action="Index">Quay lại</a></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

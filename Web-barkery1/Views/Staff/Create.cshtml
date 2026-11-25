@@ -1,0 +1,8 @@
+@model StaffCreateViewModel
+@{ ViewData["Title"] = "Tạo nhân viên"; }
+<h1>Tạo tài khoản nhân viên</h1><form asp-action="Create" method="post" class="panel form-panel"><div asp-validation-summary="All" class="text-danger"></div>
+<label asp-for="FullName">Họ tên</label><input asp-for="FullName" class="form-control mb-3" />
+<label asp-for="Email">Email</label><input asp-for="Email" class="form-control mb-3" autocomplete="off" />
+<label asp-for="Password">Mật khẩu ban đầu</label><input asp-for="Password" class="form-control mb-2" autocomplete="new-password" />
+<p class="form-text">Ít nhất 8 ký tự, có chữ hoa, chữ thường và số. Nhân viên không có quyền quản lý sản phẩm hoặc nhập/xuất.</p><button class="btn btn-primary" type="submit">Tạo nhân viên</button> <a asp-action="Index">Quay lại</a></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
